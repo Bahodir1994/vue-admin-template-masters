@@ -6,9 +6,9 @@
           <toolbar @toggleNavigationBar="drawer = !drawer"/>
           <navigation :toggle="drawer"/>
           <v-content>
-            <breadcrumbs />
+<!--            <breadcrumbs />-->
             <router-view/>
-            <page-footer />
+<!--            <page-footer />-->
           </v-content>
         </div>
       </v-app>

@@ -12,10 +12,10 @@
       </td>
       <td class="text-xs-left">{{ props.item.name }}</td>
       <td class="text-xs-left">{{ props.item.username }}</td>
-      <td class="text-xs-left">{{ props.item.email }}</td>
+<!--      <td class="text-xs-left">{{ props.item.email }}</td>-->
       <td class="text-xs-left">{{ props.item.phone }}</td>
-      <td class="text-xs-left">{{ props.item.company.name }}</td>
-      <td class="text-xs-left">{{ props.item.website }}</td>
+<!--      <td class="text-xs-left">{{ props.item.company.name }}</td>-->
+<!--      <td class="text-xs-left">{{ props.item.website }}</td>-->
       <!-- <td class="text-xs-left">{{ props.item.address.city }}</td> -->
     </template>
   </v-data-table>
@@ -54,30 +54,30 @@ export default {
           align: 'left',
           sortable: true
         },
-        {
-          text: 'Email',
-          value: 'Email',
-          align: 'left',
-          sortable: true
-        },
+        // {
+        //   text: 'Email',
+        //   value: 'Email',
+        //   align: 'left',
+        //   sortable: true
+        // },
         {
           text: 'Phone',
           value: 'Phone',
           align: 'left',
           sortable: true
         },
-        {
-          text: 'Company',
-          value: 'Company',
-          align: 'left',
-          sortable: true
-        },
-        {
-          text: 'Website',
-          value: 'Website',
-          align: 'left',
-          sortable: true
-        }
+        // {
+        //   text: 'Company',
+        //   value: 'Company',
+        //   align: 'left',
+        //   sortable: true
+        // },
+        // {
+        //   text: 'Website',
+        //   value: 'Website',
+        //   align: 'left',
+        //   sortable: true
+        // }
       ]
     }
   },

@@ -10,6 +10,8 @@ import DataTable from '../components/DataTable.vue';
 import TimeLine from '../components/TimeLine.vue';
 import UserTreeView from '../components/UserTreeView.vue';
 import Stepper from '../components/Stepper.vue';
+import Banner from '../components/Banner.vue';
+import Card from '../components/Card.vue';
 
 import LocationStatistic from '../components/statistics/LocationStatistic.vue';
 import SiteViewStatistic from '../components/statistics/SiteViewStatistic.vue';
@@ -25,6 +27,8 @@ function setupComponents(Vue){
   Vue.component('social-widget', SocialWidget);
   Vue.component('data-table', DataTable);
   Vue.component('time-line', TimeLine);
+  Vue.component('banner', Banner);
+  Vue.component('card', Card);
   Vue.component('user-tree-view', UserTreeView);
   Vue.component('stepper', Stepper);
 
