@@ -118,7 +118,7 @@ keycloak.init({ onLoad: initOptions.onLoad, checkLoginIframe: false }).then((aut
           console.log('Token not refreshed, valid for ' + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
         }
       }else{
-        var logoutOptions = {redirectUri: "http://127.0.0.1:8081"};
+        var logoutOptions = {redirectUri: "http://localhost:8081"};
         console.log("--> log: logoutOptions  ", logoutOptions);
 
         keycloak.logout(logoutOptions).then((success) => {

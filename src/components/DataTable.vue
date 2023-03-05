@@ -1,24 +1,20 @@
 <template>
+
   <v-data-table
+    density="compact"
     class="table"
     :headers="headers"
-    :items="users"
-    :rows-per-page-items="[10, 25]">
+    :items="posts"
+    :rows-per-page-items="[20, 25]"
+  >
     <template slot="items" slot-scope="props">
-      <td class="text-xs-left">
-        <v-avatar size="42">
-          <img :src="randomAvatar()" alt="avatar">
-        </v-avatar>
-      </td>
-      <td class="text-xs-left">{{ props.item.name }}</td>
-      <td class="text-xs-left">{{ props.item.username }}</td>
-<!--      <td class="text-xs-left">{{ props.item.email }}</td>-->
-      <td class="text-xs-left">{{ props.item.phone }}</td>
-<!--      <td class="text-xs-left">{{ props.item.company.name }}</td>-->
-<!--      <td class="text-xs-left">{{ props.item.website }}</td>-->
-      <!-- <td class="text-xs-left">{{ props.item.address.city }}</td> -->
+      <td class="text-xs-left">1</td>
+      <td class="text-xs-left">{{ props.item.id }}</td>
+      <td class="text-xs-left">{{ props.item.id }}</td>
+      <td class="text-xs-left">{{ props.item.id }}</td>
     </template>
   </v-data-table>
+
 </template>
 
 <script>
@@ -35,7 +31,7 @@ const avatars = [
 export default {
   data() {
     return {
-      users: [],
+      posts: [],
       headers: [
         {
           value: 'Avatar',
@@ -54,30 +50,12 @@ export default {
           align: 'left',
           sortable: true
         },
-        // {
-        //   text: 'Email',
-        //   value: 'Email',
-        //   align: 'left',
-        //   sortable: true
-        // },
         {
           text: 'Phone',
           value: 'Phone',
           align: 'left',
           sortable: true
         },
-        // {
-        //   text: 'Company',
-        //   value: 'Company',
-        //   align: 'left',
-        //   sortable: true
-        // },
-        // {
-        //   text: 'Website',
-        //   value: 'Website',
-        //   align: 'left',
-        //   sortable: true
-        // }
       ]
     }
   },
@@ -92,10 +70,10 @@ export default {
   created() {
     const vm = this;
 
-    vm.axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
+    vm.axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
       var result = response && response.data;
 
-      vm.users = result;
+      vm.posts = result;
     });
   }
 }
@@ -105,8 +83,36 @@ export default {
   .table {
     border-radius: 3px;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.21);
+    border: 1px solid rgba(154, 133, 133, 0.12);
     background-color: transparent;
+    border-color: #4478a1 !important;
+    box-shadow:0 0 10px #3d92d5 !important;
+  }
+  th, td {
+    font-size: 1rem!important;
+  }
+
+  table {
+    background: #3b5474;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #3B5474FF, #3B5474FF, #3B5474FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #3B5474FF, #3B5474FF, #3B5474FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    color: white!important;
+    font-weight: bold!important;
+    border-color: #4478a1 !important;
+    box-shadow:0 0 10px #3d92d5 !important;
+
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba(115, 144, 168, 0.58);
+  }
+
+  .gradientColorClass, .v-datatable__actions {
+    background: #3b5474;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #3B5474FF, #3B5474FF, #3B5474FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #3B5474FF, #3B5474FF, #3B5474FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-color: #4478a1 !important;
+    box-shadow:0 0 10px #3d92d5 !important;
   }
 </style>

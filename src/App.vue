@@ -5,10 +5,8 @@
         <div class="app-container">
           <toolbar @toggleNavigationBar="drawer = !drawer"/>
           <navigation :toggle="drawer"/>
-          <v-content>
-<!--            <breadcrumbs />-->
+          <v-content style="background-color: rgb(29, 41, 57);">
             <router-view/>
-<!--            <page-footer />-->
           </v-content>
         </div>
       </v-app>
