@@ -1,11 +1,11 @@
 <template>
-
   <v-data-table
-    density="compact"
-    class="table"
+    id="virtual-scroll-table"
+    class="table table-border"
     :headers="headers"
     :items="posts"
-    :rows-per-page-items="[20, 25]"
+    :rows-per-page-items="[-1]"
+    hide-default-footer
   >
     <template slot="items" slot-scope="props">
       <td class="text-xs-left">1</td>
@@ -34,9 +34,10 @@ export default {
       posts: [],
       headers: [
         {
-          value: 'Avatar',
+          text: '№',
+          value: 'Number',
           align: 'left',
-          sortable: false
+          sortable: false,
         },
         {
           text: 'Name',
@@ -80,6 +81,10 @@ export default {
 </script>
 
 <style>
+  #virtual-scroll-table {
+    max-height: 60vh;
+    overflow: auto;
+  }
   .table {
     border-radius: 3px;
     background-clip: border-box;
@@ -88,8 +93,13 @@ export default {
     border-color: #4478a1 !important;
     box-shadow:0 0 10px #3d92d5 !important;
   }
-  th, td {
-    font-size: 1rem!important;
+  td {
+    height: 5px!important;
+    font-size: medium!important;
+  },
+  th {
+     height: 10px!important;
+    border: 2px solid white!important;
   }
 
   table {

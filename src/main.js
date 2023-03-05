@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-
 import store from './config/store'
 
 import 'vuetify/dist/vuetify.min.css';
@@ -24,9 +23,11 @@ import { setupComponents } from './config/setup-components';
 import { setupAndGetI18n } from './config/setup-i18n';
 const i18n = setupAndGetI18n(Vue);
 import swatches from 'vue-swatches';
-import "vue-swatches/dist/vue-swatches.min.css"
+import "vue-swatches/dist/vue-swatches.min.css";
+import ellipse from 'vue-ellipse-progress';
 
 Vue.use(VueChartkick, { adapter: Chart });
+Vue.use(ellipse);
 Vue.component('full-calendar', fullCalendar);
 Vue.component('swatches', swatches);
 Vue.component('faFontAwesome', faFontAwesome);

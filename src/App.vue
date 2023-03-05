@@ -4,7 +4,7 @@
       <v-app id="inspire">
         <div class="app-container">
           <toolbar @toggleNavigationBar="drawer = !drawer"/>
-          <navigation :toggle="drawer"/>
+          <navigation :toggle="drawer" style="background-color: rgba(0,0,0,.54);"/>
           <v-content style="background-color: rgb(29, 41, 57);">
             <router-view/>
           </v-content>
