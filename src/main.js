@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+
 import store from './config/store'
 
 import 'vuetify/dist/vuetify.min.css';
-import faFontAwesome from 'font-awesome/css/font-awesome.css';
+import 'font-awesome/css/font-awesome.css';
 
 import Vuetify from 'vuetify';
 
@@ -12,27 +13,39 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './styles/global.css';
 
 import axios from 'axios'
-import VueAxios from 'vue-axios'
-import Keycloak from "keycloak-js";
-Vue.use(VueAxios, axios);
 import VueChartkick from 'vue-chartkick';
 import Chart from 'chart.js';
 import fullCalendar from 'vue-fullcalendar';
+import VueAxios from 'vue-axios'
+import Keycloak from "keycloak-js";
+import VueApexCharts from 'vue-apexcharts';
+
 import { setupComponents } from './config/setup-components';
 
 import { setupAndGetI18n } from './config/setup-i18n';
 const i18n = setupAndGetI18n(Vue);
 import swatches from 'vue-swatches';
 import "vue-swatches/dist/vue-swatches.min.css";
-import ellipse from 'vue-ellipse-progress';
 
+import "vue-easytable/libs/theme-default/index.css"; // import style
+import VueEasytable from "vue-easytable"; // import library
+import { VeTable, VePagination, VeIcon, VeLoading, VeLocale } from "vue-easytable"; // import library
+
+
+setupComponents(Vue);
+Vue.use(VueEasytable);
+Vue.use(VeTable);
+Vue.use(VePagination);
+Vue.use(VeIcon);
+Vue.use(VeLoading);
+Vue.use(VueAxios, axios);
+
+Vue.use(Vuetify);
 Vue.use(VueChartkick, { adapter: Chart });
-Vue.use(ellipse);
+Vue.use(VueApexCharts);
+Vue.component('apexchart', VueApexCharts);
 Vue.component('full-calendar', fullCalendar);
 Vue.component('swatches', swatches);
-Vue.component('faFontAwesome', faFontAwesome);
-setupComponents(Vue);
-Vue.use(Vuetify);
 Vue.config.productionTip = false
 
 let initOptions = {
@@ -119,7 +132,7 @@ keycloak.init({ onLoad: initOptions.onLoad, checkLoginIframe: false }).then((aut
           console.log('Token not refreshed, valid for ' + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds');
         }
       }else{
-        var logoutOptions = {redirectUri: "http://localhost:8081"};
+        var logoutOptions = {redirectUri: "http://127.0.0.1:8081"};
         console.log("--> log: logoutOptions  ", logoutOptions);
 
         keycloak.logout(logoutOptions).then((success) => {

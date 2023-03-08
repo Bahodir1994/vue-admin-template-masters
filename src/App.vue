@@ -2,10 +2,11 @@
   <div>
     <template v-if="!$route.meta.allowAnonymous">
       <v-app id="inspire">
-        <div class="app-container">
+        <div class="app-container light">
           <toolbar @toggleNavigationBar="drawer = !drawer"/>
-          <navigation :toggle="drawer" style="background-color: rgba(0,0,0,.54);"/>
-          <v-content style="background-color: rgb(29, 41, 57);">
+          <navigation :toggle="!drawer"/>
+          <v-content>
+<!--            <breadcrumbs />-->
             <router-view/>
           </v-content>
         </div>

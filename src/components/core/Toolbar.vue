@@ -189,7 +189,7 @@
         </v-list-tile>
       </v-list>
     </v-menu>
-    <div style="width: 15vw; border-left: 1px solid white" class="text-lg-right">
+    <div style="width: 16vw; border-left: 1px solid white" class="text-lg-right">
       <h4>Дехқонов Иномжон Исроил ўғли</h4>
       <h5>Бош инспектор</h5>
     </div>

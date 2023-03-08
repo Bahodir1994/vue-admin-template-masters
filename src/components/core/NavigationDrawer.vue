@@ -1,25 +1,21 @@
 <template>
-  <v-navigation-drawer v-model="toggle" fixed app style="box-shadow: 1px 5px 5px 5px; background-color: rgb(29, 41, 57)!important;">
+  <v-navigation-drawer
+    v-model="toggle"
+    fixed app>
     <v-toolbar flat dark :color="$root.themeColor" class="toolbar">
       <router-link :to="{ name: 'Dashboard' }">
-        <img src="static/logo.jpg" width="50px"></img>
+        <img src="static/logo.png" width="36px"></img>
       </router-link>
       <router-link :to="{ name: 'Dashboard' }" class="text">
-        Фойдаланувчилар мониторинги
+         Vue Admin Template
       </router-link>
     </v-toolbar>
     <v-list>
       <v-list-tile @click="changeRoute('Dashboard', 1)">
         <v-list-tile-action>
-          <v-icon class="neonText">dashboard</v-icon>
+          <v-icon>dashboard</v-icon>
         </v-list-tile-action>
-        <v-list-tile-title style="color: white" :class="[{'active': selectedIndex === 1}, 'item-title' ]" >{{ $t('dashboard') }}</v-list-tile-title>
-      </v-list-tile>
-      <v-list-tile @click="changeRoute('Mailbox', 3)">
-        <v-list-tile-action>
-          <v-icon class="neonText">mail</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-title style="color: white" :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('mailbox') }}</v-list-tile-title>
+        <v-list-tile-title :class="[{'active': selectedIndex === 1}, 'item-title' ]" >{{ $t('dashboard') }}</v-list-tile-title>
       </v-list-tile>
 
       <v-list-tile @click="changeRoute('Calendar', 2)">
@@ -27,6 +23,13 @@
           <v-icon>calendar_today</v-icon>
         </v-list-tile-action>
         <v-list-tile-title :class="[{'active': selectedIndex === 2}, 'item-title' ]"> {{ $t('calendar') }}</v-list-tile-title>
+      </v-list-tile>
+
+      <v-list-tile @click="changeRoute('Mailbox', 3)">
+        <v-list-tile-action>
+          <v-icon>mail</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-title :class="[{'active': selectedIndex === 3}, 'item-title' ]">{{ $t('mailbox') }}</v-list-tile-title>
       </v-list-tile>
 
       <v-list-group
@@ -175,21 +178,5 @@ export default {
 
   .active {
     font-weight: bold;
-  }
-  .neonText {
-    color: #fff;
-    text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff
-    /*0 0 42px #0fa,*/
-    /*0 0 82px #0fa*/
-    /*0 0 92px #0fa,*/
-    /*0 0 102px #0fa,*/
-    /*0 0 151px #0fa;*/
-  }
-
-  .v-navigation-drawer {
-    background-color: #3f4265!important;
   }
 </style>

@@ -1,20 +1,24 @@
 <template>
   <v-data-table
-    id="virtual-scroll-table"
-    class="table table-border"
+    class="table"
     :headers="headers"
-    :items="posts"
-    :rows-per-page-items="[-1]"
-    hide-default-footer
-  >
+    :items="users"
+    :rows-per-page-items="[10, 25]">
     <template slot="items" slot-scope="props">
-      <td class="text-xs-left">1</td>
-      <td class="text-xs-left">{{ props.item.id }}</td>
-      <td class="text-xs-left">{{ props.item.id }}</td>
-      <td class="text-xs-left">{{ props.item.id }}</td>
+      <td class="text-xs-left">
+        <v-avatar size="42">
+          <img :src="randomAvatar()" alt="avatar">
+        </v-avatar>
+      </td>
+      <td class="text-xs-left">{{ props.item.name }}</td>
+      <td class="text-xs-left">{{ props.item.username }}</td>
+      <td class="text-xs-left">{{ props.item.email }}</td>
+      <td class="text-xs-left">{{ props.item.phone }}</td>
+      <td class="text-xs-left">{{ props.item.company.name }}</td>
+      <td class="text-xs-left">{{ props.item.website }}</td>
+      <!-- <td class="text-xs-left">{{ props.item.address.city }}</td> -->
     </template>
   </v-data-table>
-
 </template>
 
 <script>
@@ -31,13 +35,12 @@ const avatars = [
 export default {
   data() {
     return {
-      posts: [],
+      users: [],
       headers: [
         {
-          text: '№',
-          value: 'Number',
+          value: 'Avatar',
           align: 'left',
-          sortable: false,
+          sortable: false
         },
         {
           text: 'Name',
@@ -52,11 +55,29 @@ export default {
           sortable: true
         },
         {
+          text: 'Email',
+          value: 'Email',
+          align: 'left',
+          sortable: true
+        },
+        {
           text: 'Phone',
           value: 'Phone',
           align: 'left',
           sortable: true
         },
+        {
+          text: 'Company',
+          value: 'Company',
+          align: 'left',
+          sortable: true
+        },
+        {
+          text: 'Website',
+          value: 'Website',
+          align: 'left',
+          sortable: true
+        }
       ]
     }
   },
@@ -71,58 +92,21 @@ export default {
   created() {
     const vm = this;
 
-    vm.axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
+    vm.axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
       var result = response && response.data;
 
-      vm.posts = result;
+      vm.users = result;
     });
   }
 }
 </script>
 
 <style>
-  #virtual-scroll-table {
-    max-height: 60vh;
-    overflow: auto;
-  }
   .table {
     border-radius: 3px;
     background-clip: border-box;
-    border: 1px solid rgba(154, 133, 133, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.21);
     background-color: transparent;
-    border-color: #4478a1 !important;
-    box-shadow:0 0 10px #3d92d5 !important;
-  }
-  td {
-    height: 5px!important;
-    font-size: medium!important;
-  },
-  th {
-     height: 10px!important;
-    border: 2px solid white!important;
-  }
-
-  table {
-    background: #3b5474;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #3B5474FF, #3B5474FF, #3B5474FF);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #3B5474FF, #3B5474FF, #3B5474FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    color: white!important;
-    font-weight: bold!important;
-    border-color: #4478a1 !important;
-    box-shadow:0 0 10px #3d92d5 !important;
-
-  }
-
-  tbody tr:nth-of-type(odd) {
-    background-color: rgba(115, 144, 168, 0.58);
-  }
-
-  .gradientColorClass, .v-datatable__actions {
-    background: #3b5474;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #3B5474FF, #3B5474FF, #3B5474FF);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #3B5474FF, #3B5474FF, #3B5474FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-color: #4478a1 !important;
-    box-shadow:0 0 10px #3d92d5 !important;
   }
 </style>
