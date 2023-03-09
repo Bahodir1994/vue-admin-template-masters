@@ -1,117 +1,112 @@
 <template>
-  <div>
-    <ve-table
-      :columns="columns"
-      :table-data="tableData"
-      :max-height="300"
-      :virtual-scroll-option="virtualScrollOption"
-      row-key-field-name="rowKey"
-      class="table"
-      :cell-style-option="cellStyleOption"
-    />
-    <div class="table-pagination">
-      <ve-pagination
-        :total="totalCount"
-        :page-index="pageIndex"
-        @on-page-number-change="pageNumberChange"
-        @on-page-size-change="pageSizeChange"
-      />
-    </div>
-  </div>
+  <ve-table :columns="columns" :table-data="tableData" :sort-option="sortOption" :max-height="450" :virtual-scroll-option="virtualScrollOption" border-y />
 </template>
 
-<style>
-.table-body-cell-class {
-  background: #91d5ff !important;
-  color: #fff !important;
-}
-.table-pagination {
-  margin-top: 20px;
-  text-align: right;
-  height: 15px!important;
-}
-th {
-  background: #86afc7 !important;
-  color: #070707 !important;
-}
-</style>
-
 <script>
-// Simulation table data from database
-import Vue from "vue";
-// import "vue-easytable/libs/theme-default/index.css"; // import style
-// import "vue-easytable/libs/theme-dark/index.css";
-
-import { VeTable, VePagination, VeIcon, VeLoading, VeLocale } from "vue-easytable"; // import library
-
-Vue.use(VeTable);
-Vue.use(VePagination);
-Vue.use(VeIcon);
-Vue.use(VeLoading);
-
-Vue.prototype.$veLoading = VeLoading;
-Vue.prototype.$veLocale = VeLocale;
-let DB_DATA = [];
-
 export default {
   data() {
     return {
-      pageIndex: 1,
-      pageSize: 10,
-      virtualScrollOption: {
-        enable: true,
+      sortOption: {
+        multipleSort: true,
+        sortChange: (params) => {
+          console.log("sortChange::", params);
+          this.sortChange(params);
+        },
       },
       columns: [
-        {field: "", key: "a", title: "#", align: "center",
-          renderBodyCell: ({ row, column, rowIndex }, h) => {
-            return (this.pageIndex - 1) * this.pageSize + rowIndex + 1;
-          },
+        {
+          field: "appName",
+          key: "aname",
+          title: "Дастур номи",
+          align: "left"
         },
-        { field: "name", key: "b", title: "Name", align: "center" },
-        { field: "date", key: "c", title: "Date", align: "left" },
-        { field: "hobby", key: "d", title: "Hobby", align: "left" },
-        { field: "address", key: "e", title: "Address", width: "" },
+        {
+          field: "totalUsers",
+          key: "tUsers",
+          title: "Жами фойдаланувчилар",
+          align: "center",
+          sortBy: "",
+        },
+        {
+          field: "activeUsers",
+          key: "aUsers",
+          title: "Онлайн фойдаланувчилар",
+          align: "center",
+          sortBy: "asc",
+        },
+        {
+          field: "workTime",
+          key: "workTime",
+          title: "Ишлаш вақти",
+          align: "center",
+        }
+      ],
+      tableData: [
+        {
+          appName: "ЯААТ дастури",
+          totalUsers: 520,
+          activeUsers: 66,
+          workTime: null
+        },
+        {
+          appName: "E-транзит",
+          totalUsers: 856,
+          activeUsers: 42,
+          workTime: null
+        },
+        {
+          appName: "E-Мурожаат ААТ",
+          totalUsers: 742,
+          activeUsers: 150,
+          workTime: null
+        },
+        {
+          appName: "SEDO",
+          totalUsers: 4000,
+          activeUsers: 3520,
+          workTime: null
+        }
       ],
     };
   },
-  computed: {
-    // table data
-    tableData() {
-      const { pageIndex, pageSize } = this;
-      return DB_DATA.slice((pageIndex - 1) * pageSize, pageIndex * pageSize);
-    },
-    // total count
-    totalCount() {
-      return DB_DATA.length;
-    },
-  },
   methods: {
-    // page number change
-    pageNumberChange(pageIndex) {
-      this.pageIndex = pageIndex;
+    sortChange(params) {
+      let data = this.tableData.slice(0);
+      data.sort((a, b) => {
+        if (params.totalUsers) {
+          if (params.totalUsers === "asc") {
+            return a.totalUsers - b.totalUsers;
+          } else if (params.totalUsers === "desc") {
+            return b.totalUsers - a.totalUsers;
+          } else {
+            return 0;
+          }
+        }
+      });
+      data.sort((a, b) => {
+        if (params.activeUsers) {
+          if (params.activeUsers === "asc") {
+            return a.activeUsers - b.activeUsers;
+          } else if (params.activeUsers === "desc") {
+            return b.activeUsers - a.activeUsers;
+          } else {
+            return 0;
+          }
+        }
+      });
+      this.tableData = data;
     },
-
-    // page size change
-    pageSizeChange(pageSize) {
-      this.pageIndex = 1;
-      this.pageSize = pageSize;
-    },
-
-    // Simulation table data
-    initDatabase() {
-      DB_DATA = [];
-      for (let i = 0; i < 50; i++) {
-        DB_DATA.push({
-          name: "John" + i,
-          date: "1900-05-20",
-          hobby: "coding and coding repeat" + i,
-          address: "No.1 Century Avenue, Shanghai" + i,
-        });
-      }
-    },
-  },
-  created() {
-    this.initDatabase();
   },
 };
 </script>
+
+<style>
+  th {
+    background-color: #f7f7f8;
+    color: #6b7c8c;
+    border-right: 1px solid #CBD1D7;
+  }
+  th:hover {
+    background-color: #cbd1d7!important;
+  }
+</style>

@@ -5,11 +5,8 @@
       <v-card style="margin-bottom: 150px;">
         <v-toolbar color="cyan" dark>
           <v-toolbar-side-icon></v-toolbar-side-icon>
-
           <v-toolbar-title>Inbox</v-toolbar-title>
-
           <v-spacer></v-spacer>
-
           <v-btn icon>
             <v-icon>search</v-icon>
           </v-btn>
@@ -106,7 +103,7 @@ export default {
     openDetail() {
       const vm = this;
 
-      
+
     }
   }
 }

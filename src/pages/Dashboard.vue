@@ -2,31 +2,33 @@
   <v-container fluid grid-list-xl>
     <v-layout row wrap>
       <v-flex d-flex lg4 sm6 xs12 class=" rounded-lg elevation-1 bgColor2" style="border: 0px solid #0d47a1!important; border-radius: 0%!important;">
-        <apexchart height="300" type="area" :options="chart7" :series="series7"></apexchart>
+        <apexchart  type="area" :options="chart7" :series="series7"></apexchart>
       </v-flex>
       <v-flex d-flex lg4 sm6 xs6 class=" rounded-lg elevation-1 bgColor2" style="border: 0px solid #0d47a1!important; border-radius: 0%!important;">
-        <apexchart height="300" type="area" :options="chart1" :series="series1"></apexchart>
+        <apexchart  type="area" :options="chart1" :series="series1"></apexchart>
       </v-flex>
       <v-flex d-flex lg4 sm6 xs12 class=" rounded-lg elevation-1 bgColor2" style="border: 0px solid #0d47a1!important; border-radius: 0%!important;">
-        <apexchart  type="bar" :options="chart6" :series="series6"></apexchart>
+          <apexchart  type="bar" :options="chart6" :series="series6"></apexchart>
       </v-flex>
-      <v-flex d-flex lg6 sm6 xs6 class=" rounded-lg elevation-1 bgColor2" style="border: 0px solid #0d47a1!important; border-radius: 0%!important;">
-        <easy-data-table></easy-data-table>
+      <v-flex d-flex lg6 sm6 xs6 class="mt-1 rounded-lg elevation-1 bgColor2" style="border: 0px solid #0d47a1!important; border-radius: 0%!important;">
+        <div class="row">
+          <h2 class="ma-1" style="background-color: #4f8df91a; color: #3e74fe">Ички дастурлар</h2>
+          <easy-data-table></easy-data-table>
+        </div>
       </v-flex>
-      <v-flex d-flex lg6 sm6 xs6 class=" rounded-lg elevation-1 bgColor2" style="border: 0px solid #0d47a1!important; border-radius: 0%!important;">
-        <easy-data-table></easy-data-table>
+      <v-flex d-flex lg6 sm6 xs6 class="mt-1 rounded-lg elevation-1 bgColor2" style="border: 0px solid #0d47a1!important; border-radius: 0%!important;">
+        <div class="row">
+          <h2 class="ma-1" style="background-color: #4f8df91a; color: #3e74fe">Ташки дастурлар</h2>
+          <easy-data-table-to></easy-data-table-to>
+        </div>
       </v-flex>
-      <!-- Statistics Ends -->
     </v-layout>
   </v-container>
 </template>
 
 <script>
-export default {
+  export default {
   name: 'Vue Chart',
-  theme: {
-    defaultTheme: 'dark'
-  },
   data: function () {
     return {
       chart1: {
@@ -486,9 +488,9 @@ export default {
           enabled: true,
           enabledOnSeries: [1]
         },
-        labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
+        labels: ['ЯААТ', 'E-транзит', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
         xaxis: {
-          type: 'datetime'
+          type: 'text'
         },
         yaxis: [{
           title: {
@@ -553,8 +555,6 @@ export default {
     }
   }
 }
-
-
 </script>
 
 <style>

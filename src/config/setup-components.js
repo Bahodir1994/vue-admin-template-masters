@@ -19,6 +19,7 @@ import inProgs from '../components/dashChart/InProgs';
 import maxInProg from '../components/dashChart/MaxInProg';
 
 import easyDataTable from '../components/EasyDataTable';
+import easyDataTableTo from '../components/EasyDataTableTo';
 
 function setupComponents(Vue){
 
@@ -41,6 +42,7 @@ function setupComponents(Vue){
   Vue.component('maxInProg', maxInProg);
 
   Vue.component('easyDataTable', easyDataTable);
+  Vue.component('easyDataTableTo', easyDataTableTo);
 
 }
 
